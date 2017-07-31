@@ -1,0 +1,85 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+BalanceFactor	ttree.c	/^int CTtree::BalanceFactor(TTREENODE *pNode) const  $/;"	f	class:CTtree
+BalanceLeftBranch	ttree.c	/^int CTtree::BalanceLeftBranch(TTREENODE *&pNode)  $/;"	f	class:CTtree
+BalanceRightBranch	ttree.c	/^int CTtree::BalanceRightBranch(TTREENODE *&pNode)  $/;"	f	class:CTtree
+CTtree	ttree.h	/^class CTtree   $/;"	c
+Clear	ttree.c	/^void CTtree::Clear()   $/;"	f	class:CTtree
+Delete	ttree.c	/^void CTtree::Delete(ElementType key)  $/;"	f	class:CTtree
+Depth	ttree.c	/^int CTtree::Depth()  $/;"	f	class:CTtree
+DoubleRotateLeft	ttree.c	/^TTREENODE *CTtree::DoubleRotateLeft(TTREENODE *pNode)  $/;"	f	class:CTtree
+DoubleRotateRight	ttree.c	/^TTREENODE *CTtree::DoubleRotateRight(TTREENODE *pNode)  $/;"	f	class:CTtree
+ElementData	ttree.h	/^typedef int ElementData;  $/;"	t
+ElementType	ttree.h	/^typedef int ElementType;   $/;"	t
+Find	ttree.c	/^ElementData CTtree::Find(ElementType key)  $/;"	f	class:CTtree
+FindMax	ttree.c	/^TTREENODE* FindMax(TTREENODE *pNode)  $/;"	f
+FindMin	ttree.c	/^TTREENODE* FindMin(TTREENODE *pNode)  $/;"	f
+FreeNode	ttree.c	/^void CTtree::FreeNode(TTREENODE *pNode)  $/;"	f	class:CTtree
+GetMaxNode	ttree.c	/^const TTREENODE *CTtree::GetMaxNode()  $/;"	f	class:CTtree
+GetMinNode	ttree.c	/^const TTREENODE *CTtree::GetMinNode()  $/;"	f	class:CTtree
+GetNodeSize	ttree.c	/^int GetNodeSize()  $/;"	f
+InOrder	ttree.h	/^    InOrder,  $/;"	e	enum:TraverseOrder
+InOrderTraverse	ttree.c	/^void CTtree::InOrderTraverse(TTREENODE *pNode) const  $/;"	f	class:CTtree
+Insert	ttree.c	/^void CTtree::Insert(ElementType key, ElementData data)  $/;"	f	class:CTtree
+IsEmpty	ttree.c	/^bool CTtree::IsEmpty( ) const  $/;"	f	class:CTtree
+LevelOrder	ttree.h	/^    LevelOrder  $/;"	e	enum:TraverseOrder
+LevelOrderTraverse	ttree.c	/^void CTtree::LevelOrderTraverse(TTREENODE *pNode) const  $/;"	f	class:CTtree
+MallocNode	ttree.c	/^TTREENODE *CTtree::MallocNode()  $/;"	f	class:CTtree
+Max	ttree.c	/^int CTtree::Max( int a, int b ) const  $/;"	f	class:CTtree
+PostOrder	ttree.h	/^    PostOrder,  $/;"	e	enum:TraverseOrder
+PostOrderTraverse	ttree.c	/^void CTtree::PostOrderTraverse(TTREENODE *pNode) const  $/;"	f	class:CTtree
+PreOrder	ttree.h	/^    PreOrder,  $/;"	e	enum:TraverseOrder
+PreOrderTraverse	ttree.c	/^void CTtree::PreOrderTraverse(TTREENODE *pNode) const  $/;"	f	class:CTtree
+SingleRotateLeft	ttree.c	/^TTREENODE *CTtree::SingleRotateLeft(TTREENODE *pNode)  $/;"	f	class:CTtree
+SingleRotateRight	ttree.c	/^TTREENODE *CTtree::SingleRotateRight(TTREENODE *pNode)  $/;"	f	class:CTtree
+TTREENODE	ttree.h	/^} TTREENODE;\/\/ *LPTTREENODE, *PTTREENODE;  $/;"	t	typeref:struct:tagTTREENODE
+TraverseOrder	ttree.h	/^enum TraverseOrder  $/;"	g
+TraverseTree	ttree.c	/^void CTtree::TraverseTree(TraverseOrder order)  $/;"	f	class:CTtree
+_LINKEDQUEUE_H_	linkqueue.h	2;"	d
+_NODE_H_	node.h	2;"	d
+_TTREE_H_	ttree.h	27;"	d
+_countof	test.c	2;"	d	file:
+_earse	ttree.c	/^void CTtree::_earse(TTREENODE *pNode)   $/;"	f	class:CTtree
+_insert	ttree.c	/^bool CTtree::_insert(TTREENODE *&pNode, ElementType key, ElementData data)  $/;"	f	class:CTtree
+a	test.c	/^static int a[] = { 30, 28, 45, 15, 16, 17, 19, 90, 25, 36, 31, 32, 20, 95, 23, 91, 21, 11, 12, 13, 10, 8, 9, 7};   $/;"	v	file:
+bf	ttree.h	/^    char bf;                    \/\/ Balabce factor(bf = right subtree height - left subtree height)     $/;"	m	struct:tagTTREENODE
+clear	linkqueue.h	/^void linkedQueue<T>::clear()  $/;"	f	class:linkedQueue
+copy	linkqueue.h	/^void linkedQueue<T>::copy(const linkedQueue<T>& q)  $/;"	f	class:linkedQueue
+empty	linkqueue.h	/^bool linkedQueue<T>::empty() const  $/;"	f	class:linkedQueue
+front	linkqueue.h	/^T& linkedQueue<T>::front()  $/;"	f	class:linkedQueue
+front	linkqueue.h	/^const T& linkedQueue<T>::front() const  $/;"	f	class:linkedQueue
+getNode	linkqueue.h	/^node<T> *linkedQueue<T>::getNode(const T& item)  $/;"	f	class:linkedQueue
+item	ttree.h	/^    ElementData item[pageSize]; \/\/ Item data array.       $/;"	m	struct:tagTTREENODE
+key	ttree.h	/^    ElementType key[pageSize]; \/\/ Item key array.  $/;"	m	struct:tagTTREENODE
+keycompare	ttree.c	/^int CTtree::keycompare(ElementType key1, ElementType key2)  $/;"	f	class:CTtree
+left	ttree.h	/^	tagTTREENODE *left;         \/\/ Left child pointer.  $/;"	m	struct:tagTTREENODE
+linkedQueue	linkqueue.h	/^class linkedQueue  $/;"	c
+linkedQueue	linkqueue.h	/^linkedQueue<T>::linkedQueue(): qfront(NULL), qback(NULL), qsize(0)  $/;"	f	class:linkedQueue
+linkedQueue	linkqueue.h	/^linkedQueue<T>::linkedQueue(const linkedQueue<T>& obj)  $/;"	f	class:linkedQueue
+m_nSize	ttree.h	/^    int         m_nSize;  $/;"	m	class:CTtree
+main	test.c	/^int main( void )     $/;"	f
+minItems	ttree.h	/^   minItems = pageSize - 2 \/\/ minimal number of items in internal node  $/;"	e	enum:__anon1
+nItems	ttree.h	/^    unsigned short int nItems;  \/\/ Internal node items.  $/;"	m	struct:tagTTREENODE
+next	node.h	/^  node<T> *next;    \/\/ next node in the list  $/;"	m	struct:node
+node	node.h	/^  node() : next(NULL)  $/;"	f	struct:node
+node	node.h	/^  node(const T& item, node<T> *nextNode = NULL) :   $/;"	f	struct:node
+node	node.h	/^struct node  $/;"	s
+nodeValue	node.h	/^  T nodeValue;      \/\/ data held by the node  $/;"	m	struct:node
+operator =	linkqueue.h	/^linkedQueue<T>& linkedQueue<T>::operator= (const linkedQueue<T>& rhs)  $/;"	f	class:linkedQueue
+pageSize	ttree.h	/^   pageSize = 125,  $/;"	e	enum:__anon1
+parent	ttree.h	/^    tagTTREENODE *parent;$/;"	m	struct:tagTTREENODE
+pop	linkqueue.h	/^void linkedQueue<T>::pop()  $/;"	f	class:linkedQueue
+push	linkqueue.h	/^void linkedQueue<T>::push(const T& item)  $/;"	f	class:linkedQueue
+qback	linkqueue.h	/^    node<T> *qfront, *qback;  $/;"	m	class:linkedQueue
+qfront	linkqueue.h	/^    node<T> *qfront, *qback;  $/;"	m	class:linkedQueue
+qsize	linkqueue.h	/^    int qsize;  $/;"	m	class:linkedQueue
+remove	ttree.c	/^int CTtree::remove(TTREENODE *&pNode, ElementType key)  $/;"	f	class:CTtree
+right	ttree.h	/^    tagTTREENODE *right;        \/\/ Right child pointer.  $/;"	m	struct:tagTTREENODE
+root	ttree.h	/^    TTREENODE   *root;        $/;"	m	class:CTtree
+size	linkqueue.h	/^int linkedQueue<T>::size() const  $/;"	f	class:linkedQueue
+tagTTREENODE	ttree.h	/^typedef struct tagTTREENODE  $/;"	s
+~linkedQueue	linkqueue.h	/^linkedQueue<T>::~linkedQueue()  $/;"	f	class:linkedQueue
