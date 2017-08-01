@@ -520,12 +520,12 @@ bool _insert(TTREENODE *pNode, char *key, char *value)
     }  
 }    
   
-void CTtree::Clear()   
+void Clear()   
 {  
     _earse(root);     
 }  
   
-void CTtree::_earse(TTREENODE *pNode)   
+void _earse(TTREENODE *pNode)   
 {  
     if (pNode == NULL)  
     {  
@@ -539,18 +539,23 @@ void CTtree::_earse(TTREENODE *pNode)
     FreeNode(pNode);  
 }  
   
-void CTtree::Delete(ElementType key)  
+void Delete(char *key)  
 {  
     TTREENODE *pNode = root;  
-    int h = remove(pNode, key);  
-    assert(h >= 0);  
+    int h = remove(pNode, key); 
+    if(h <= 0)
+    {
+        fprintf(stdout,"The function %s : The k-v pair did not be removed!\n",__func__);
+        exit(1);
+    }
+   // assert(h >= 0);  
     if (pNode != root)  
     {   
         root = pNode;  
     }  
 }  
   
-int CTtree::BalanceLeftBranch(TTREENODE *&pNode)  
+int BalanceLeftBranch(TTREENODE *pNode)  
 {  
     if (pNode->bf < 0)  
     {   
@@ -589,7 +594,7 @@ int CTtree::BalanceLeftBranch(TTREENODE *&pNode)
     }  
 }  
   
-int CTtree::BalanceRightBranch(TTREENODE *&pNode)  
+int BalanceRightBranch(TTREENODE *pNode)  
 {  
     if (pNode->bf > 0)  
     {   
@@ -629,11 +634,11 @@ int CTtree::BalanceRightBranch(TTREENODE *&pNode)
     return 0;  
 }  
   
-int CTtree::remove(TTREENODE *&pNode, ElementType key)  
+int remove(TTREENODE *pNode, char *key)  
 {  
     int n = pNode->nItems;  
-    ElementType keymin = pNode->item[0];  
-    ElementType keymax = pNode->item[n > 0 ? n - 1 : 0];  
+    char *keymin = pNode->item[0].key;  
+    char *keymax = pNode->item[n > 0 ? n - 1 : 0].key;  
     int nDiff = keycompare(key, keymin);  
     if (nDiff <= 0)  
     {   
@@ -662,7 +667,7 @@ int CTtree::remove(TTREENODE *&pNode, ElementType key)
     {          
         for (int i = 0; i < n; i++)   
         {   
-            if (pNode->item[i] == key)  
+            if (strcmp(pNode->item[i].key,key) == 0)  
             {   
                 if (n == 1)   
                 {   
@@ -691,13 +696,21 @@ int CTtree::remove(TTREENODE *&pNode, ElementType key)
                             pLeftId = pLeftId->right;  
                         }  
                         while (--i >= 0)   
-                        {   
-                            pNode->item[i+1] = pNode->item[i];  
-                            pNode->data[i+1] = pNode->data[i];  
-                        }  
-                        pNode->item[0] = pLeftId->item[pLeftId->nItems-1];  
-                        pNode->data[0] = pLeftId->data[pLeftId->nItems-1];  
-                        key = pNode->item[0];  
+                        {  
+
+
+                            strcpy(pNode->item[i+1].key,pNode->item[i].key);
+                            strcpy(pNode->item[i+1].value,pNode->item[i].value);
+                           // pNode->item[i+1] = pNode->item[i];  
+                           // pNode->data[i+1] = pNode->data[i];  
+                        } 
+
+                        strcpy(pNode->item[0].key,pLeftId->item[pLeftId->nItems-1].key);
+                        strcpy(pNode->item[0].value,pLeftId->item[pLeftId->nItems-1].value);
+                       // pNode->item[0] = pLeftId->item[pLeftId->nItems-1];  
+                       // pNode->data[0] = pLeftId->data[pLeftId->nItems-1]; 
+                        strcpy(key,pNode->item[0].key);
+                       // key = pNode->item[0];  
                         TTREENODE *pChildId = pLeftId;  
                         int h = remove(pChildId, pNode->item[0]);  
                         if (pChildId != pLeftId)   
@@ -717,13 +730,20 @@ int CTtree::remove(TTREENODE *&pNode, ElementType key)
                             pRightId = pRightId->left;  
                         }  
                         while (++i < n)  
-                        {   
-                            pNode->item[i-1] = pNode->item[i];  
-                            pNode->data[i-1] = pNode->data[i];  
+                        {
+
+                            strcpy(pNode->item[i-1].key,pNode->item[i].key);
+                            strcpy(pNode->item[i-1].value,pNode->item[i].value);
+                           // pNode->item[i-1] = pNode->item[i];  
+                          //  pNode->data[i-1] = pNode->data[i];  
                         }  
-                        pNode->item[n-1] = pRightId->item[0];  
-                        pNode->data[n-1] = pRightId->data[0];  
-                        key = pNode->item[n-1];  
+
+                        strcpy(pNode->item[n-1].key,pNode->item[0].key);
+                        strcpy(pNode->item[n-1].value,pNode->item[0].value);
+                      //  pNode->item[n-1] = pRightId->item[0];  
+                      //  pNode->data[n-1] = pRightId->data[0];  
+                        strcpy(key,pNode->item[n-1].key);
+                    //    key = pNode->item[n-1];  
                           
                         TTREENODE *pChildId = pRightId;  
                         int h = remove(pChildId, key);  
@@ -740,8 +760,10 @@ int CTtree::remove(TTREENODE *&pNode, ElementType key)
                 }  
                 while (++i < n)  
                 {   
-                    pNode->item[i-1] = pNode->item[i];  
-                    pNode->data[i-1] = pNode->data[i];  
+                    strcpy(pNode->item[i-1].key,pNode->item[i].key);
+                    strcpy(pNode->item[i-1].value,pNode->item[i].value);
+                   // pNode->item[i-1] = pNode->item[i];  
+                  //  pNode->data[i-1] = pNode->data[i];  
                 }  
                 pNode->nItems -= 1;  
                 return 0;  
@@ -769,19 +791,19 @@ int CTtree::remove(TTREENODE *&pNode, ElementType key)
     return -1;  
 }  
   
-bool CTtree::IsEmpty( ) const  
+bool IsEmpty( ) const  
 {  
     return root == NULL;  
 }  
   
-int keycompare(t_key key1, key_t key2)  
+int keycompare(char *key1, char *key2)  
 {
-	int compare = strlen(key1.k) - strlen(key2.k);
-	return compare == 0 ? strcmp(key1.k,key2.k) : compare;
+	int compare = strlen(key1) - strlen(key2);
+	return compare == 0 ? strcmp(key1,key2) : compare;
 	
 }  
   
-void CTtree::TraverseTree(TraverseOrder order)  
+void TraverseTree(TraverseOrder order)  
 {  
     switch (order)  
     {  
@@ -800,7 +822,7 @@ void CTtree::TraverseTree(TraverseOrder order)
     }  
 }  
   
-void CTtree::InOrderTraverse(TTREENODE *pNode) const  
+void InOrderTraverse(TTREENODE *pNode) const  
 {   
     if (pNode != NULL)  
     {   
@@ -814,7 +836,7 @@ void CTtree::InOrderTraverse(TTREENODE *pNode) const
     }  
 }   
   
-void CTtree::PostOrderTraverse(TTREENODE *pNode) const  
+void PostOrderTraverse(TTREENODE *pNode) const  
 {   
     if (pNode != NULL)  
     {   
@@ -828,7 +850,7 @@ void CTtree::PostOrderTraverse(TTREENODE *pNode) const
     }  
 }   
     
-void CTtree::PreOrderTraverse(TTREENODE *pNode) const  
+void PreOrderTraverse(TTREENODE *pNode) const  
 {   
     if (pNode != NULL)  
     {   
@@ -844,7 +866,7 @@ void CTtree::PreOrderTraverse(TTREENODE *pNode) const
 
 #include "linkqueue.h"  
   
-void CTtree::LevelOrderTraverse(TTREENODE *pNode) const  
+void LevelOrderTraverse(TTREENODE *pNode) const  
 {  
     if (pNode == NULL)  
     {  
